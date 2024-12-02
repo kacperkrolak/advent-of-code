@@ -17,7 +17,8 @@ if __name__ == "__main__":
 
     solution = Solution()
 
-    solution.read_input(input_file)
+    with open(input_file, "r") as file:
+        solution.read_input(file)
     
     print(solution.part_one())
     print(solution.part_two())

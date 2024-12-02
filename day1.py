@@ -1,16 +1,16 @@
 from collections import Counter
 from solution_base import SolutionBase
+from typing import TextIO
 
 class Solution(SolutionBase):
-    def read_input(self, input_file):
+    def read_input(self, file: TextIO):
         self.listOne = []
         self.listTwo = []
 
-        with open(input_file, "r") as file:
-            for line in file:
-                l, r = line.split()
-                self.listOne.append(int(l))
-                self.listTwo.append(int(r))
+        for line in file:
+            l, r = line.split()
+            self.listOne.append(int(l))
+            self.listTwo.append(int(r))
 
         self.listOne.sort()
         self.listTwo.sort()
