@@ -2,31 +2,7 @@ from collections import Counter
 from solution_base import SolutionBase
 from typing import TextIO
 from enum import Enum
-
-class Vector:
-    def __init__(self, x: int, y: int):
-        self.x = x
-        self.y = y
-        
-    def add(self, other: "Vector"):
-        self.x += other.x
-        self.y += other.y
-        
-    def subtract(self, other: "Vector"):
-        self.x -= other.x
-        self.y -= other.y
-        
-    def equals(self, other: "Vector"):
-        return self.x == other.x and self.y == other.y
-    
-    def __str__(self) -> str:
-        return f'[{self.x}, {self.y}]'
-
-    def __hash__(self):
-        return hash((self.x, self.y))
-    
-    def copy(self):
-        return Vector(self.x, self.y)
+from vector import Vector
         
 UP = Vector(0, -1)
 DOWN = Vector(0, 1)
