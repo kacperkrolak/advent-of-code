@@ -19,7 +19,7 @@ def get_filename(day: str, part: int, is_test: bool):
 def run_part(day: str, part: int, is_test: bool):
     filename = get_filename(day, part, is_test)
 
-    solution = Solution()
+    solution = Solution(is_test)
 
     with open(filename, "r") as file:
         solution.read_input(file)
