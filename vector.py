@@ -15,6 +15,12 @@ class Vector:
         
         return self
         
+    def get_neighbors(self) -> list["Vector"]:
+        return [Vector(self.x + 1, self.y), Vector(self.x - 1, self.y), Vector(self.x, self.y + 1), Vector(self.x, self.y - 1)]
+    
+    def tuple(self) -> tuple[int, int]:
+        return (self.x, self.y)
+    
     def equals(self, other: "Vector") -> bool:
         return self.x == other.x and self.y == other.y
     
@@ -26,3 +32,6 @@ class Vector:
     
     def copy(self):
         return Vector(self.x, self.y)
+    
+    def __repr__(self):
+        return f'[{self.x}, {self.y}]'
