@@ -8,6 +8,12 @@ class Vector:
         self.y += other.y
         
         return self
+    
+    def scale(self, scalar: int) -> "Vector":
+        self.x *= scalar
+        self.y *= scalar
+        
+        return self
         
     def subtract(self, other: "Vector") -> "Vector":
         self.x -= other.x
