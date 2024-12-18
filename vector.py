@@ -41,3 +41,8 @@ class Vector:
     
     def __repr__(self):
         return f'[{self.x}, {self.y}]'
+    
+    def __eq__(self, other) -> bool:
+        if not isinstance(other, Vector):
+            return False
+        return self.x == other.x and self.y == other.y
