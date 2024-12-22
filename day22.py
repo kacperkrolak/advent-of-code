@@ -36,5 +36,45 @@ class Solution(SolutionBase):
         
         return cost
 
+
     def part_two(self):
-        return 0
+        cost = 0
+
+        # How many bananas each sequence will give.
+        sequence_score: dict[tuple[int, int, int, int], int] = {}
+
+        # @TODO: Only add the val if the tuple appeared in given buyer the first time.
+        for secret in self.secrets:
+            lastFour = []
+            seen: set[tuple[int, int, int, int]] = set()
+
+            prev_val = secret % 10
+            prev = secret
+            for _ in range(2000):
+                next = self.evolve_secret(prev)
+                next_val = next % 10
+                
+                diff = next_val - prev_val
+                
+                prev = next
+                prev_val = next_val
+
+                lastFour.append(diff)
+                if len(lastFour) < 4:
+                    continue
+
+                if len(lastFour) > 4:
+                    lastFour.pop(0)
+                
+                if tuple(lastFour) in seen:
+                    continue
+                seen.add(tuple(lastFour))
+                
+                if not tuple(lastFour) in sequence_score:
+                    sequence_score[tuple(lastFour)] = 0
+                sequence_score[tuple(lastFour)] += next_val
+
+
+            cost += prev
+
+        return max(sequence_score.values())
